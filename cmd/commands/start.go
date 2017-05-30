@@ -141,12 +141,7 @@ func startTendermint(dir string, basecoinApp *app.Basecoin) error {
 
 	// TODO: parse the log level from the config properly (multi modules)
 	// but some tm code must be refactored for better usability
-	//lvl, err := log.AllowLevel(cfg.LogLevel)
-	//if err != nil {
-	//	return err
-	//}
-	//tmLogger := log.NewFilter(logger, lvl)
-	tmLogger := tmflags.ParseLogLevel(cfg.LogLevel, logger)
+	tmLogger, err := tmflags.ParseLogLevel(cfg.LogLevel, logger)
 	if err != nil {
 		return err
 	}
